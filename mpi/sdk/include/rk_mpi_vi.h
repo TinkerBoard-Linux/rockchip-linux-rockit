@@ -5,6 +5,8 @@
 #define INCLUDE_RT_MPI_MPI_VI_H_
 
 #include "rk_comm_vi.h"
+#include "rk_comm_dis.h"
+#include "rk_comm_swcac.h"
 
 #ifdef __cplusplus
 #if __cplusplus
@@ -67,6 +69,14 @@ RK_S32 RK_MPI_VI_GetEptz(VI_PIPE ViPipe, VI_CHN ViChn,  VI_CROP_INFO_S *stCropIn
 RK_S32 RK_MPI_VI_SetEptz(VI_PIPE ViPipe, VI_CHN ViChn,  VI_CROP_INFO_S stCropInfo);
 RK_S32 RK_MPI_VI_GetChnMirrorFlip(VI_PIPE ViPipe, VI_CHN ViChn, VI_ISP_MIRROR_FLIP_S *pstMirrFlip);
 RK_S32 RK_MPI_VI_SetChnMirrorFlip(VI_PIPE ViPipe, VI_CHN ViChn, VI_ISP_MIRROR_FLIP_S stMirrFlip);
+
+RK_S32 RK_MPI_VI_SetChnDISConfig(VI_PIPE ViPipe, VI_CHN ViChn, const DIS_CONFIG_S *pstDISConfig);
+RK_S32 RK_MPI_VI_GetChnDISConfig(VI_PIPE ViPipe, VI_CHN ViChn, DIS_CONFIG_S *pstDISConfig);
+RK_S32 RK_MPI_VI_SetChnDISAttr(VI_PIPE ViPipe, VI_CHN ViChn, const DIS_ATTR_S *pstDISAttr);
+RK_S32 RK_MPI_VI_GetChnDISAttr(VI_PIPE ViPipe, VI_CHN ViChn, DIS_ATTR_S *pstDISAttr);
+RK_S32 RK_MPI_VI_GetSwcacConfig(VI_PIPE ViPipe, VI_CHN ViChn, SWCAC_CONFIG_S *pstSwcacCfg);
+RK_S32 RK_MPI_VI_SetSwcacConfig(VI_PIPE ViPipe, VI_CHN ViChn, const SWCAC_CONFIG_S *pstSwcacCfg);
+
 #ifdef __cplusplus
 #if __cplusplus
 }

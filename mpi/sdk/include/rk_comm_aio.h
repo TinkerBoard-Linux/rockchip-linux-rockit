@@ -98,6 +98,7 @@ typedef struct rkAUDIO_FRAME_S {
     RK_U32              u32Seq;         /*audio frame seq*/
     RK_U32              u32Len;         /*data lenth per channel in frame, u32Len <= 0 mean eos*/
     RK_BOOL             bBypassMbBlk; /* FALSE: copy, TRUE: MbBlock owned by internal */
+    RK_S32              s32SampleRate;  /*audio frame sampleRate*/
 } AUDIO_FRAME_S;
 
 typedef struct rkAEC_FRAME_S {

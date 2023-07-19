@@ -434,11 +434,16 @@ typedef struct rkVENC_CHN_STATUS_S {
 typedef struct rkVENC_SLICE_SPLIT_S {
     /* RW; Range:[0,1]; slice split enable, RK_TRUE:enable, RK_FALSE:diable, default value:RK_FALSE*/
     RK_BOOL bSplitEnable;
-    /* RW; this value presents slice split mode;0:slice is split by byte number;1:slice is split by mb/ctu number*/
+    /* RW; this value presents slice split mode;
+    * 0:slice is split by byte number(all slice(max slice count to 501) in one packet out);
+    * 1:slice is split by mb/ctu number(all slice(max slice count to 501) in one packet out);
+    * 2:slice is split by mb/ctu number(all slice(max slice count to 8) multi packet out(max packet count to 16));
+    * 3:slice is split by mb/ctu number(one slice(max slice count to 8) one packet out(reserve));
+    */
     RK_U32  u32SplitMode;
     /* RW; this value presents the mb number of one slice;
-    * When u32SplitMode = 0 this value is the max byte number for each slice.
-    * When u32SplitMode = 1 this value is the MB/CTU number for each slice.
+    * When u32SplitMode = 0, this value is the max byte number for each slice.
+    * When u32SplitMode = 1|2|3, this value is the MB/CTU number for each slice.
     */
     RK_U32  u32SplitSize;
 } VENC_SLICE_SPLIT_S;
