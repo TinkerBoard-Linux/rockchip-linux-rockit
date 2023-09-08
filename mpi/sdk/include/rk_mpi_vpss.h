@@ -36,6 +36,9 @@ RK_S32 RK_MPI_VPSS_GetGrpRotation(VPSS_GRP VpssGrp, ROTATION_E *penRotation);
 RK_S32 RK_MPI_VPSS_SetGrpMirror(VPSS_GRP VpssGrp, RK_BOOL bMirror, RK_BOOL bFlip);
 RK_S32 RK_MPI_VPSS_GetGrpMirror(VPSS_GRP VpssGrp, RK_BOOL *bMirror, RK_BOOL *bFlip);
 
+RK_S32 RK_MPI_VPSS_SetGrpAIISPAttr(VPSS_GRP VpssGrp, const AIISP_ATTR_S *pstAiIspAttr);
+RK_S32 RK_MPI_VPSS_GetGrpAIISPAttr(VPSS_GRP VpssGrp, AIISP_ATTR_S *pstAiIspAttr);
+
 RK_S32 RK_MPI_VPSS_SendFrame(VPSS_GRP VpssGrp, VPSS_GRP_PIPE VpssGrpPipe,
                                       const VIDEO_FRAME_INFO_S *pstVideoFrame, RK_S32 s32MilliSec);
 
