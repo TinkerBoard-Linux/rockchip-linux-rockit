@@ -435,11 +435,16 @@ typedef struct rkVENC_CHN_STATUS_S {
 typedef struct rkVENC_SLICE_SPLIT_S {
     /* RW; Range:[0,1]; slice split enable, RK_TRUE:enable, RK_FALSE:diable, default value:RK_FALSE*/
     RK_BOOL bSplitEnable;
-    /* RW; this value presents slice split mode;0:slice is split by byte number;1:slice is split by mb/ctu number*/
+    /* RW; this value presents slice split mode;
+    * 0:slice is split by byte number(all slice(max slice count to 501) in one packet out);
+    * 1:slice is split by mb/ctu number(all slice(max slice count to 501) in one packet out);
+    * 2:slice is split by mb/ctu number(all slice(max slice count to 8) multi packet out(max packet count to 16));
+    * 3:slice is split by mb/ctu number(one slice(max slice count to 8) one packet out);
+    */
     RK_U32  u32SplitMode;
     /* RW; this value presents the mb number of one slice;
-    * When u32SplitMode = 0 this value is the max byte number for each slice.
-    * When u32SplitMode = 1 this value is the MB/CTU number for each slice.
+    * When u32SplitMode = 0, this value is the max byte number for each slice.
+    * When u32SplitMode = 1|2|3, this value is the MB/CTU number for each slice.
     */
     RK_U32  u32SplitSize;
 } VENC_SLICE_SPLIT_S;
@@ -970,11 +975,21 @@ typedef struct rkVENC_H264_QBIAS_S {
     RK_U32  u32QbiasP; /* RW; Range:[0,1023] */
 } VENC_H264_QBIAS_S;
 
+typedef struct rkVENC_H264_QBIAS2_S {
+    RK_BOOL bEnable;   /* RW; Range:[0,1] */
+    RK_U32 u32Qbias2[18];
+} VENC_H264_QBIAS2_S;
+
 typedef struct rkVENC_H265_QBIAS_S {
     RK_BOOL bEnable;   /* RW; Range:[0,1] */
     RK_U32  u32QbiasI; /* RW; Range:[0,511] */
     RK_U32  u32QbiasP; /* RW; Range:[0,511] */
 } VENC_H265_QBIAS_S;
+
+typedef struct rkVENC_H265_QBIAS2_S {
+    RK_BOOL bEnable;   /* RW; Range:[0,1] */
+    RK_U32 u32Qbias2[18];
+} VENC_H265_QBIAS2_S;
 
 typedef struct rkVENC_FILTER_S {
     RK_U32 u32StrengthI; /* RW; Range:[0,3] */
@@ -995,6 +1010,7 @@ typedef struct rkVENC_ANTI_LINE_S {
 
 typedef struct rkVENC_LAMBDA_S {
     RK_U32 u32Lambda; /* RW; Range:[0, 8] */
+    RK_U32 u32LambdaI; /* RW; Range:[0, 8] */
 } VENC_LAMBDA_S;
 
 typedef struct rkVENC_EXP_INFO_S {
@@ -1008,6 +1024,21 @@ typedef struct rkVENC_EXP_INFO_S {
         RK_BOOL bConverged;
     } stExpInfo[2];
 } VENC_EXP_INFO_S;
+
+typedef struct rkVENC_STATIC_WEIGHT_S {
+    RK_U32 u32FrmNum; /* RW; Range:[0, 7] */
+    RK_U32 u32Madp16Th; /* RW; Range:[0, 63] */
+    RK_U32 u32Skip16Weight; /* RW; Range: 0 or [3, 8] */
+    RK_U32 u32Skip32Weight; /* RW; Range: 0 or [3, 8] */
+} VENC_STATIC_WEIGHT_S;
+
+typedef struct rkVENC_LIGHT_CHANGE_S {
+    RK_U32 u32Level;
+} VENC_LIGHT_CHANGE_S;
+
+typedef struct rkVENC_ANTI_FLICK_S {
+    RK_U32 u32AntiFlick; /* RW; Range:[0, 3] */
+} VENC_ANTI_FLICK_S;
 
 #ifdef __cplusplus
 #if __cplusplus

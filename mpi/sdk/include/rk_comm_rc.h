@@ -222,6 +222,11 @@ typedef struct rkVENC_RC_PARAM2_S {
     RK_U32 u32RowIQpDelta; // RW; Range:[0, 10]
 } VENC_RC_PARAM2_S;
 
+/* The param3 of rc */
+typedef struct rkVENC_RC_PARAM3_S {
+    RK_U32 u32AqRange[10];
+} VENC_RC_PARAM3_S;
+
 #ifdef __cplusplus
 #if __cplusplus
 }

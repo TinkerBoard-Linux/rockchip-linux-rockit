@@ -30,7 +30,7 @@ typedef enum rkMB_UID_E {
 #define MB_INVALID_POOLID              (-1U)
 #define MB_INVALID_HANDLE              NULL
 
-#define MB_MAX_COMM_POOLS              16
+#define MB_MAX_COMM_POOLS              128
 #define MB_MAX_MOD_COMM_POOLS          16
 
 #define MB_MAX_COUNT                   1024
